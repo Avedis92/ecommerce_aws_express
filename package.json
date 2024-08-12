@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node --loader ts-node/esm src/app.ts"
+    "start": "nodemon"
   },
   "keywords": [],
   "author": "",
