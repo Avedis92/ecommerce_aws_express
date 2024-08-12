@@ -1,7 +1,7 @@
 import express, { Express } from "express";
 import * as Dotenv from "dotenv";
 import bodyParser from "body-parser";
-import productRouter from "./routes/productRoute.js";
+import productRouter from "./routes/productRoute";
 import serverless from "serverless-http";
 
 Dotenv.config();

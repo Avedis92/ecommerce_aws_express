@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import productService from "../services/productService.ts";
-import { CategoryType } from "../shared/types.ts";
+import productService from "../services/productService";
+import { CategoryType } from "../shared/types";
 
 class ProductController {
   getProductByIdController() {

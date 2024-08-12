@@ -1,4 +1,4 @@
-import { IProduct, CategoryType } from "../shared/types.ts";
+import { IProduct, CategoryType } from "../shared/types";
 
 class ProductService {
   getProductByIdService(id: string): IProduct {
