@@ -1,14 +1,14 @@
-import express, { Express } from "express";
+import express from "express";
 import * as Dotenv from "dotenv";
 import bodyParser from "body-parser";
-import productRouter from "./routes/productRoute";
+import productRouter from "./routes/productRoute.js";
 import serverless from "serverless-http";
 
 Dotenv.config();
 
 const isLocalDev = process.env.IS_LOCAL === "true";
 
-const app: Express = express();
+const app = express();
 
 app.use(bodyParser.json());
 

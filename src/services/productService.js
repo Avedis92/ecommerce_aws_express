@@ -1,7 +1,5 @@
-import { IProduct, CategoryType } from "../shared/types";
-
 class ProductService {
-  getProductByIdService(id: string): IProduct {
+  getProductByIdService(id) {
     return {
       id,
       title: "pants",
@@ -13,7 +11,7 @@ class ProductService {
       imageSource: "blabla",
     };
   }
-  getProductsByCategoryService(category: CategoryType): IProduct[] {
+  getProductsByCategoryService(category) {
     return [
       {
         id: "1",

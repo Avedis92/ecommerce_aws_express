@@ -1,21 +1,17 @@
-import { Request, Response } from "express";
-import productService from "../services/productService";
-import { CategoryType } from "../shared/types";
+import productService from "../services/productService.js";
 
 class ProductController {
   getProductByIdController() {
-    return (req: Request, res: Response) => {
+    return (req, res) => {
       const { id } = req.params;
       const product = productService.getProductByIdService(id);
       res.status(200).json(product);
     };
   }
   getProductsByCategoryController() {
-    return (req: Request, res: Response) => {
+    return (req, res) => {
       const { category } = req.params;
-      const products = productService.getProductsByCategoryService(
-        category as CategoryType
-      );
+      const products = productService.getProductsByCategoryService(category);
       res.status(200).json(products);
     };
   }
