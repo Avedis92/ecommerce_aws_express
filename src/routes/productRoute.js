@@ -8,5 +8,6 @@ productRouter.get(
   "/categories/:category",
   productController.getProductsByCategoryController()
 );
+productRouter.post("/add", productController.addProductController());
 
 export default productRouter;
