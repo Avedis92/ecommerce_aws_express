@@ -12,7 +12,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use("/products", productRouter);
+app.use("/api/v1/products", productRouter);
 
 export const handler = serverless(app);
 
