@@ -13,21 +13,21 @@ class ProductService {
     const result = await dynamoDb.get(params).promise();
     return result;
   }
-  // to update  the controller below in another PR
-  getProductsByCategoryService(category) {
-    return [
-      {
-        id: "1",
-        title: "pants",
-        description: "skinny pants",
-        price: 12,
-        quantity: 4,
-        rating: 4.5,
-        category,
-        imageSource: "blabla",
+
+  async getProductsByCategoryService(category) {
+    const params = {
+      TableName: "Products",
+      indexName: "category-index",
+      KeyConditionExpression: "category = :productCategory",
+      ExpressionAttributeValues: {
+        ":productCategory": category,
       },
-    ];
+      Limit: 4,
+    };
+    const result = await dynamoDb.query(params).promise();
+    return result;
   }
+
   async addProductsService(product) {
     const params = {
       TableName: "Products",

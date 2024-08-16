@@ -19,9 +19,11 @@ class ProductController {
   }
 
   getProductsByCategoryController() {
-    return (req, res) => {
+    return async (req, res) => {
       const { category } = req.params;
-      const products = productService.getProductsByCategoryService(category);
+      const products = await productService.getProductsByCategoryService(
+        category
+      );
       res.status(200).json(products);
     };
   }
