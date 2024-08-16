@@ -14,18 +14,19 @@ class ProductService {
     return result;
   }
 
-  async getProductsByCategoryService(category) {
+  async getProductsByCategoryService(category, limit = 12) {
     const params = {
       TableName: "Products",
-      indexName: "category-index",
+      IndexName: "category-index",
       KeyConditionExpression: "category = :productCategory",
       ExpressionAttributeValues: {
         ":productCategory": category,
       },
-      Limit: 4,
+      Limit: limit,
+      ScanIndexForward: false,
     };
     const result = await dynamoDb.query(params).promise();
-    return result;
+    return result.Items;
   }
 
   async addProductsService(product) {
