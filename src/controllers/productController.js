@@ -8,7 +8,7 @@ class ProductController {
       try {
         const product = await productService.getProductByIdService(id);
         if (product) {
-          res.status(200).json(product);
+          res.status(200).json(product[0]);
         } else throw new HTTPError(404, "Product was not found");
       } catch (e) {
         if (e.statusCode === 404) {
@@ -22,11 +22,19 @@ class ProductController {
     return async (req, res) => {
       const { category } = req.params;
       const { limit } = req.query;
-      const products = await productService.getProductsByCategoryService(
-        category,
-        limit
-      );
-      res.status(200).json(products);
+      try {
+        const products = await productService.getProductsByCategoryService(
+          category,
+          limit
+        );
+        if (products) {
+          res.status(200).json(products);
+        } else throw new HTTPError(404, "Products were not found");
+      } catch (e) {
+        if (e.statusCode === 404) {
+          res.status(404).json({ type: "error", message: e.message });
+        } else res.status(500).json({ type: "error", message: e.message });
+      }
     };
   }
 

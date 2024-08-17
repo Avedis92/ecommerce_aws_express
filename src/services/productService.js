@@ -11,7 +11,10 @@ class ProductService {
       ReturnValues: "ALL_NEW",
     };
     const result = await dynamoDb.get(params).promise();
-    return result;
+    if (result.Item) {
+      return result.Item[0];
+    }
+    return undefined;
   }
 
   async getProductsByCategoryService(category, limit = 12) {
@@ -26,7 +29,10 @@ class ProductService {
       ScanIndexForward: false,
     };
     const result = await dynamoDb.query(params).promise();
-    return result.Items;
+    if (result.Items.length) {
+      return result.Items;
+    }
+    return undefined;
   }
 
   async addProductsService(product) {
