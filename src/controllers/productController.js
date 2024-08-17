@@ -8,7 +8,7 @@ class ProductController {
       try {
         const product = await productService.getProductByIdService(id);
         if (product) {
-          res.status(200).json(product[0]);
+          res.status(200).json(product);
         } else throw new HTTPError(404, "Product was not found");
       } catch (e) {
         if (e.statusCode === 404) {

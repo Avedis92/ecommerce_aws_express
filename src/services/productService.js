@@ -12,7 +12,7 @@ class ProductService {
     };
     const result = await dynamoDb.get(params).promise();
     if (result.Item) {
-      return result.Item[0];
+      return result.Item;
     }
     return undefined;
   }
