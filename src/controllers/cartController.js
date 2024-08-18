@@ -9,7 +9,7 @@ class CartController {
         const cart = await cartService.getCartById(id);
         if (cart) {
           res.status(200).json(cart);
-        } else throw new HTTPError(404, "Cart was not found");
+        } else res.status(404).json(null);
       } catch (e) {
         if (e.statusCode === 404) {
           res.status(404).json({ type: "error", message: e.message });
@@ -23,12 +23,10 @@ class CartController {
       const cartObj = req.body;
       try {
         await cartService.addNewCart(cartObj);
-        res
-          .status(200)
-          .json({
-            type: "success",
-            message: "Product was successfully added to cart",
-          });
+        res.status(200).json({
+          type: "success",
+          message: "Product was successfully added to cart",
+        });
       } catch {
         res.status(500).json({
           type: "error",
@@ -43,12 +41,10 @@ class CartController {
       const { id } = req.params;
       try {
         await cartService.updateCart(products, id);
-        res
-          .status(200)
-          .json({
-            type: "success",
-            message: "Product was successfully added to cart",
-          });
+        res.status(200).json({
+          type: "success",
+          message: "Product was successfully added to cart",
+        });
       } catch {
         res.status(500).json({
           type: "error",
