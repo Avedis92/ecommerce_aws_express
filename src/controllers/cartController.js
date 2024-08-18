@@ -4,9 +4,9 @@ import { HTTPError } from "../shared/error.js";
 class CartController {
   getCartByIdController() {
     return async (req, res) => {
-      const { id } = req.params;
+      const { userId } = req.params;
       try {
-        const cart = await cartService.getCartById(id);
+        const cart = await cartService.getCartByUserId(userId);
         if (cart) {
           res.status(200).json(cart);
         } else res.status(404).json(null);

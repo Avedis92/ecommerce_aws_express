@@ -43,17 +43,19 @@ class CartService {
     return result;
   }
 
-  async getCartById(id) {
+  async getCartByUserId(userId) {
     const params = {
       TableName: "Carts",
-      Key: {
-        id,
+      KeyIndex: "userId-index",
+      KeyConditionExpression: "userId = :cartUserId",
+      ExpressionAttributeValues: {
+        ":cartUserId": userId,
       },
       ReturnValues: "ALL_NEW",
     };
-    const result = await dynamoDb.get(params).promise();
-    if (result.Item) {
-      return result.Item;
+    const result = await dynamoDb.query(params).promise();
+    if (result.Items.length) {
+      return result.Items;
     }
     return undefined;
   }
