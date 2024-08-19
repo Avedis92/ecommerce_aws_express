@@ -26,7 +26,7 @@ class CartController {
         res.status(200).json({
           type: "success",
           message: "Product was successfully added to cart",
-          payload: cart,
+          payload: cart.Attributes,
         });
       } catch {
         res.status(500).json({
@@ -45,7 +45,7 @@ class CartController {
         res.status(200).json({
           type: "success",
           message: "Product was successfully added to cart",
-          payload: cart,
+          payload: cart.Attributes,
         });
       } catch {
         res.status(500).json({
