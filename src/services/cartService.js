@@ -46,7 +46,7 @@ class CartService {
   async getCartByUserId(userId) {
     const params = {
       TableName: "Carts",
-      KeyIndex: "userId-index",
+      IndexName: "userId-index",
       KeyConditionExpression: "userId = :cartUserId",
       ExpressionAttributeValues: {
         ":cartUserId": userId,
