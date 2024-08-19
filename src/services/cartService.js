@@ -55,7 +55,7 @@ class CartService {
     };
     const result = await dynamoDb.query(params).promise();
     if (result.Items.length) {
-      return result.Items;
+      return result.Items[0];
     }
     return undefined;
   }
