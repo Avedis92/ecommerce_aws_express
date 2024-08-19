@@ -22,10 +22,11 @@ class CartController {
     return async (req, res) => {
       const cartObj = req.body;
       try {
-        await cartService.addNewCart(cartObj);
+        const cart = await cartService.addNewCart(cartObj);
         res.status(200).json({
           type: "success",
           message: "Product was successfully added to cart",
+          payload: cart,
         });
       } catch {
         res.status(500).json({
@@ -40,10 +41,11 @@ class CartController {
       const products = req.body;
       const { id } = req.params;
       try {
-        await cartService.updateCart(products, id);
+        const cart = await cartService.updateCart(products, id);
         res.status(200).json({
           type: "success",
           message: "Product was successfully added to cart",
+          payload: cart,
         });
       } catch {
         res.status(500).json({
