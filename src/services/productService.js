@@ -46,6 +46,14 @@ class ProductService {
     const result = await dynamoDb.put(params).promise();
     return result;
   }
+
+  async getAllProductsService() {
+    const params = {
+      TableName: "Products",
+    };
+    const result = await dynamoDb.scan(params).promise();
+    return result.Items;
+  }
 }
 
 const productService = new ProductService();

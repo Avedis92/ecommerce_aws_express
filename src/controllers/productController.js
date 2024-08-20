@@ -54,6 +54,12 @@ class ProductController {
       }
     };
   }
+  getAllProducts() {
+    return async (req, res) => {
+      const products = await productService.getAllProductsService();
+      res.status(200).json(products);
+    };
+  }
 }
 
 const productController = new ProductController();
