@@ -44,13 +44,13 @@ class CartController {
         const cart = await cartService.updateCart(products, id);
         res.status(200).json({
           type: "success",
-          message: "Product was successfully added to cart",
+          message: "Cart was successfully updated",
           payload: cart.Attributes,
         });
       } catch {
         res.status(500).json({
           type: "error",
-          message: "Product was not successfully added to cart",
+          message: "Cart was not successfully updated",
         });
       }
     };
