@@ -9,11 +9,9 @@ class CartController {
         const cart = await cartService.getCartByUserId(userId);
         if (cart) {
           res.status(200).json(cart);
-        } else res.status(404).json(null);
+        } else res.status(404);
       } catch (e) {
-        if (e.statusCode === 404) {
-          res.status(404).json({ type: "error", message: e.message });
-        } else res.status(500).json({ type: "error", message: e.message });
+        res.status(500).json({ type: "error", message: e.message });
       }
     };
   }
