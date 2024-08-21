@@ -4,6 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import productRouter from "./routes/productRoute.js";
 import cartRouter from "./routes/cartRoute.js";
+import imageRouter from "./routes/imageRoute.js";
 import serverless from "serverless-http";
 
 Dotenv.config();
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/carts", cartRouter);
+app.use("/api/v1/images", imageRouter);
 
 export const handler = serverless(app);
 
